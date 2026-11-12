@@ -1,5 +1,7 @@
 # AN TV
 
+[صفحة التحميل وشرح التثبيت المصوّر](https://aij17.github.io/AN-TV-Installer/)
+
 ملف تثبيت AN TV لأجهزة **Android TV وGoogle TV** (أندرويد 8 فأحدث).
 
 [تحميل أحدث نسخة AN TV](https://github.com/aij17/AN-TV-Installer/releases/latest/download/AN-TV.apk)

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="26" viewBox="0 0 96 26">
+  <g stroke="#D9C0FA" fill="none" stroke-width="1.25">
+    <path d="M0 2h96M0 24h96" opacity=".65"/>
+    <path d="M0 13 11 5 22 13 11 21ZM22 13 36 2 50 13 36 24ZM50 13 61 5 72 13 61 21ZM72 13 85 2 98 13 85 24Z"/>
+    <path d="M29 13 36 7 43 13 36 19ZM78 13 85 7 92 13 85 19Z" fill="#C8AFF4" fill-opacity=".55"/>
+    <path d="M0 13h96" stroke-dasharray="1 5" opacity=".5"/>
+  </g>
+</svg>
