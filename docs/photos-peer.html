@@ -4,11 +4,11 @@
 <script src="assets/peerjs.min.js"></script><script>
 const id=location.hash.slice(1),status=document.getElementById('status'),count=document.getElementById('count'),result=document.getElementById('result'),send=document.getElementById('send');
 if(!/^antv-[0-9a-f]{32}$/.test(id)){status.textContent='امسح رمز QR الجديد من شاشة «صوري» على التلفزيون';send.disabled=true}else{
- const peer=new Peer(),conn=peer.connect(id,{reliable:true});
+ const peer=new Peer();let conn;peer.on('open',()=>{conn=peer.connect(id,{reliable:true});bind(conn)});
  peer.on('error',e=>{status.textContent='تعذر الاتصال: '+e.type});
- conn.on('open',()=>{status.textContent='التلفزيون متصل';send.disabled=false});
+ function bind(conn){bindData(conn);conn.on('open',()=>{status.textContent='التلفزيون متصل';send.disabled=false});
  conn.on('close',()=>{status.textContent='انقطع اتصال التلفزيون. افتح «صوري» وامسح الرمز من جديد';send.disabled=true});
- let waiter=null;conn.on('data',m=>{if(m.ack==='saved')count.textContent='الصور المحفوظة: '+m.count+' من 10';if(waiter){let w=waiter;waiter=null;m.ack==='error'?w.reject(Error(m.message||'تعذر الحفظ')):w.resolve(m)}});
+ }let waiter=null;function bindData(conn){conn.on('data',m=>{if(m.ack==='saved')count.textContent='الصور المحفوظة: '+m.count+' من 10';if(waiter){let w=waiter;waiter=null;m.ack==='error'?w.reject(Error(m.message||'تعذر الحفظ')):w.resolve(m)}})}
  function ack(type,data){return new Promise((resolve,reject)=>{let timer=setTimeout(()=>{waiter=null;reject(Error('انتهت مهلة الاتصال'))},15000);waiter={resolve:m=>{clearTimeout(timer);if(m.ack!==type)reject(Error('تعذر إرسال الصورة'));else resolve(m)},reject:e=>{clearTimeout(timer);reject(e)}};conn.send(data)})}
  async function jpeg(file){const img=await createImageBitmap(file),k=Math.min(1,1920/img.width,1080/img.height);const c=document.createElement('canvas');c.width=Math.max(1,Math.round(img.width*k));c.height=Math.max(1,Math.round(img.height*k));c.getContext('2d').drawImage(img,0,0,c.width,c.height);img.close();return new Uint8Array(await(await new Promise(r=>c.toBlob(r,'image/jpeg',.82))).arrayBuffer())}
  send.onclick=async()=>{const fs=[...document.getElementById('files').files];if(!fs.length){result.textContent='اختر صورة أولًا';return}if(fs.length>10){result.textContent='الحد الأقصى 10 صور';return}send.disabled=true;let n=0;for(const f of fs)try{const b=await jpeg(f);if(b.length>3145728)throw Error('الصورة كبيرة جدًا');await ack('begin',{type:'begin',size:b.length});for(let i=0;i<b.length;i+=16384)await ack('chunk',{type:'chunk',data:b.slice(i,i+16384)});await ack('saved',{type:'end'});result.textContent='تم إرسال '+(++n)+' من '+fs.length}catch(e){result.className='error';result.textContent='توقف الإرسال: '+e.message;break}send.disabled=false};
