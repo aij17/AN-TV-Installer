@@ -53,4 +53,4 @@ AN TV يصبح الواجهة الرئيسية وشاشة التوقف بعد ن
 
 [أوامر AN TV من الجوال والكمبيوتر](docs/PHONE-SETUP.md) · تتوفر أزرار النسخ في صفحة الشرح.
 
-[مقترحات هويات الثيمات](docs/THEME-PROPOSALS.md) · [طلب تثبيت AN TV بمساعد محلي](docs/AI-SETUP-PROMPT.md)
+[ثيمات AN TV](docs/THEME-PROPOSALS.md) · [طلب تثبيت AN TV بمساعد محلي](docs/AI-SETUP-PROMPT.md)

@@ -53,13 +53,15 @@ chooseMethod(methodLinks.some(a=>a.dataset.method===location.hash.slice(1)) ? lo
 if(!methodLinks.some(a=>a.getAttribute('aria-selected')==='true'&&!document.getElementById(a.dataset.method).hidden))chooseMethod('install-tv');
 followHash();addEventListener('hashchange',followHash);
 const themes = {
- lavender:{title:'خزامى',text:'بنفسجي ناعم، زجاج هادئ، وسدو رفيع. امتداد للهوية الحالية.',colors:['#8a6bd0','#eee7f8','#c6a6e8','#30243d']},
- najdi:{title:'نجدي',text:'صورتك الأصلية بالأحمر والأبيض والأسود والأخضر والبرتقالي، مستخدمة كما هي في فواصل المعاينة دون رسم بديل.',colors:['#c52129','#fff7e9','#231f20','#159446','#ef8529']},
+ lavender:{title:'الخزامى',text:'زجاج بنفسجي هادئ ونقش مستوحى من سنابل زهرة الخزامى.',colors:['#8a6bd0','#eee7f8','#c6a6e8','#30243d']},
+ najdi:{title:'نجد',text:'صورتك الأصلية بالأحمر والأبيض والأسود والأخضر والبرتقالي، مستخدمة كما هي في الرئيسية وشاشة التوقف دون رسم بديل.',colors:['#c52129','#fff7e9','#231f20','#159446','#ef8529']},
 };
+themes.sadu={title:'الوشي — السدو',text:'أحمر السدو والأسود والعاجي، مع تفاصيل ذهبية ومعينات النسيج التقليدي.',colors:['#a52b2d','#211810','#f5e6c5','#d3aa5e']};
 const preview=document.getElementById('theme-preview');
+function updateThemeShot(){const img=document.getElementById('theme-shot');if(img){img.src='assets/theme-'+preview.dataset.theme+'-'+preview.dataset.scene+'.png';img.alt=(preview.dataset.scene==='home'?'الرئيسية':'شاشة التوقف')+' · '+themes[preview.dataset.theme].title;}}
 function chooseTheme(key){
  const theme=themes[key];if(!theme||!preview)return;
- preview.dataset.theme=key;
+ preview.dataset.theme=key;updateThemeShot();
  document.getElementById('theme-title').textContent=theme.title;
  document.getElementById('theme-description').textContent=theme.text;
  const palette=document.getElementById('theme-palette');palette.replaceChildren();
@@ -70,7 +72,7 @@ document.querySelectorAll('button[data-theme]').forEach(b=>b.addEventListener('c
 document.querySelectorAll('[data-scene]').forEach(b=>{
  if(b.tagName!=='BUTTON')return;
  b.addEventListener('click',()=>{
-  preview.dataset.scene=b.dataset.scene;
+  preview.dataset.scene=b.dataset.scene;updateThemeShot();
   document.querySelectorAll('button[data-scene]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));
  });
 });

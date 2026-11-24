@@ -10,3 +10,5 @@
 
 /* The original portrait PNG is rotated only by CSS, scaled uniformly and repeated. */
 .najdi-tile{display:none}.tv-preview[data-theme=najdi] .demo-pattern{--strip-height:18px;height:var(--strip-height);display:flex;direction:ltr;background:none;overflow:hidden;opacity:1;gap:0}.tv-preview[data-theme=najdi] .najdi-tile{display:block;position:relative;flex:0 0 calc(var(--strip-height) * 13.181372549019608);height:var(--strip-height);overflow:hidden}.najdi-tile img{position:absolute;left:50%;top:50%;width:var(--strip-height);max-width:none;height:auto;transform:translate(-50%,-50%) rotate(90deg)}@media(max-width:760px){.tv-preview[data-theme=najdi] .demo-pattern{--strip-height:12px}}
+
+.real-theme-preview{display:block;padding:0;overflow:hidden;aspect-ratio:16/9;background:#ece7e3}.real-theme-preview>img{display:block;width:100%;height:100%;object-fit:contain}.theme-choices{flex-wrap:wrap}
