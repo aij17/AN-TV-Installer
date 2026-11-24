@@ -53,7 +53,7 @@ chooseMethod(methodLinks.some(a=>a.dataset.method===location.hash.slice(1)) ? lo
 if(!methodLinks.some(a=>a.getAttribute('aria-selected')==='true'&&!document.getElementById(a.dataset.method).hidden))chooseMethod('install-tv');
 followHash();addEventListener('hashchange',followHash);
 const themes = {
- lavender:{title:'الخزامى',text:'زجاج بنفسجي هادئ ونقش مستوحى من سنابل زهرة الخزامى.',colors:['#8a6bd0','#eee7f8','#c6a6e8','#30243d']},
+ lavender:{title:'الخزامى',text:'زجاج بنفسجي هادئ ونقش زهرة الخزامى بلون موحد، يصل بينها خط رفيع.',colors:['#8a6bd0','#eee7f8','#c6a6e8','#30243d']},
  najdi:{title:'نجد',text:'صورتك الأصلية بالأحمر والأبيض والأسود والأخضر والبرتقالي، مستخدمة كما هي في الرئيسية وشاشة التوقف دون رسم بديل.',colors:['#c52129','#fff7e9','#231f20','#159446','#ef8529']},
 };
 themes.sadu={title:'الوشي — السدو',text:'أحمر السدو والأسود والعاجي، مع تفاصيل ذهبية ومعينات النسيج التقليدي.',colors:['#a52b2d','#211810','#f5e6c5','#d3aa5e']};
