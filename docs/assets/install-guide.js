@@ -54,10 +54,7 @@ if(!methodLinks.some(a=>a.getAttribute('aria-selected')==='true'&&!document.getE
 followHash();addEventListener('hashchange',followHash);
 const themes = {
  lavender:{title:'خزامى',text:'بنفسجي ناعم، زجاج هادئ، وسدو رفيع. امتداد للهوية الحالية.',colors:['#8a6bd0','#eee7f8','#c6a6e8','#30243d']},
- najdi:{title:'نجدي',text:'أحمر السدو هو البطل، مع عاجي وفحمي، ولمسات أخضر وبرتقالي من نقشِك. النقش واضح في الفواصل، وبقية الواجهة هادئة.',colors:['#c52129','#fff7e9','#231f20','#159446','#ef8529']},
- hijazi:{title:'حجازي',text:'بترولي وخشب دافئ، وشبكة هندسية مستوحاة من الرواشين. هوية أكثر هدوءًا وعمقًا.',colors:['#29666b','#f4eddc','#a37e50','#18373c']},
- asiri:{title:'عسيري',text:'أخضر عميق مع وردي وبرتقالي، ومثلثات ملونة مستوحاة من القط العسيري. حيوية في التفاصيل، مع نصوص واضحة.',colors:['#167b65','#b44f7d','#efab43','#fff9ec']},
- coastal:{title:'بحري',text:'فيروزي وأزرق بحري وعاجي، مع خطوط موج رفيعة. مساحة أخف، ونقوش أقل، وشعور هادئ.',colors:['#258f9b','#e6f5f3','#d9bd94','#183844']}
+ najdi:{title:'نجدي',text:'صورتك الأصلية بالأحمر والأبيض والأسود والأخضر والبرتقالي، مستخدمة كما هي في فواصل المعاينة دون رسم بديل.',colors:['#c52129','#fff7e9','#231f20','#159446','#ef8529']},
 };
 const preview=document.getElementById('theme-preview');
 function chooseTheme(key){
